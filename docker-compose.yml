@@ -1,0 +1,14 @@
+services:
+  vigilaunty:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      LOG_LEVEL: INFO
+      EVALUATE_INTERVAL_SECONDS: "30"   # background alert evaluation; 0 disables
+    volumes:
+      - vigilaunty-data:/data
+    restart: unless-stopped
+
+volumes:
+  vigilaunty-data:
